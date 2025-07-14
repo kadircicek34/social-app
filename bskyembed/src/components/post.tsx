@@ -8,7 +8,6 @@ import {h} from 'preact'
 
 import replyIcon from '../../assets/bubble_filled_stroke2_corner2_rounded.svg'
 import likeIcon from '../../assets/heart2_filled_stroke2_corner0_rounded.svg'
-import logo from '../../assets/logo.svg'
 import repostIcon from '../../assets/repost_stroke2_corner2_rounded.svg'
 import {CONTENT_LABELS} from '../labels'
 import {getRkey, niceDate, prettyNumber} from '../utils'
@@ -60,9 +59,7 @@ export function Post({thread}: Props) {
           <div className="flex-1" />
           <Link
             href={href}
-            className="transition-transform hover:scale-110 shrink-0 self-start">
-            <img src={logo} className="h-8" />
-          </Link>
+            className="transition-transform hover:scale-110 shrink-0 self-start" />
         </div>
         <PostContent record={record} />
         <Embed content={post.embed} labels={post.labels} />

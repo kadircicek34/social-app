@@ -215,7 +215,7 @@ export function Takendown() {
                   Your account was found to be in violation of the{' '}
                   <InlineLinkText
                     label={_(msg`Bluesky Social Terms of Service`)}
-                    to="https://bsky.social/about/support/tos"
+                    to="https://aiturklaw.com"
                     style={[a.text_md, a.leading_normal]}
                     overridePresentation>
                     Bluesky Social Terms of Service

@@ -3,7 +3,6 @@ import '../index.css'
 import {AppBskyFeedDefs, AtpAgent} from '@atproto/api'
 import {h, render} from 'preact'
 
-import logo from '../../assets/logo.svg'
 import {applyTheme, initSystemColorMode} from '../color-mode'
 import {Container} from '../components/container'
 import {Link} from '../components/link'
@@ -70,9 +69,7 @@ function PwiOptOut({thread}: {thread: AppBskyFeedDefs.ThreadViewPost}) {
     <Container href={href}>
       <Link
         href={href}
-        className="transition-transform hover:scale-110 absolute top-4 right-4">
-        <img src={logo} className="h-6" />
-      </Link>
+        className="transition-transform hover:scale-110 absolute top-4 right-4" />
       <div className="w-full py-12 gap-4 flex flex-col items-center">
         <p className="max-w-80 text-center w-full text-textLight dark:text-textDimmed">
           The author of this post has requested their posts not be displayed on
@@ -93,9 +90,7 @@ function ErrorMessage() {
     <Container href="https://bsky.app/">
       <Link
         href="https://bsky.app/"
-        className="transition-transform hover:scale-110 absolute top-4 right-4">
-        <img src={logo} className="h-6" />
-      </Link>
+        className="transition-transform hover:scale-110 absolute top-4 right-4" />
       <p className="my-16 text-center w-full text-textLight dark:text-textDimmed">
         Post not found, it may have been deleted.
       </p>
