@@ -93,18 +93,21 @@ export function DesktopRightNav({routeName}: {routeName: string}) {
 
       <Text style={[a.leading_snug, t.atoms.text_contrast_low]}>
         {hasSession && (
-          <InlineLinkText
-            to="https://aiturklaw.com"
-            label={_(msg`Privacy`)}>
-            {_(msg`Privacy`)}
-          </InlineLinkText>
-          {' • '}
-          <InlineLinkText
-            to="https://aiturklaw.com"
-            label={_(msg`Terms`)}>
-            {_(msg`Terms`)}
-          </InlineLinkText>
-        </Text>
+          <>
+            <InlineLinkText
+              to="https://aiturklaw.com"
+              label={_(msg`Privacy`)}>
+              {_(msg`Privacy`)}
+            </InlineLinkText>
+            {' • '}
+            <InlineLinkText
+              to="https://aiturklaw.com"
+              label={_(msg`Terms`)}>
+              {_(msg`Terms`)}
+            </InlineLinkText>
+          </>
+        )}
+      </Text>
 
       {kawaii && (
         <Text style={[t.atoms.text_contrast_medium, {marginTop: 12}]}>
