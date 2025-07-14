@@ -11,7 +11,7 @@ export function Logotype({fill, width, style, ...rest}: {fill?: string; width?: 
     <Text
       {...rest}
       style={[
-        {color: fill || '#001f54', fontWeight: 'bold', fontSize: size * ratio, textTransform: 'uppercase'},
+        {color: fill || pal.colors.brandText || '#001f54', fontWeight: 'bold', fontSize: size * ratio, textTransform: 'uppercase'},
         style,
       ]}>
       TÜRKLAW

@@ -19,7 +19,6 @@ import {useLoggedOutViewControls} from '#/state/shell/logged-out'
 import {useShellLayout} from '#/state/shell/shell-layout'
 import {useCloseAllActiveElements} from '#/state/util'
 import {Link} from '#/view/com/util/Link'
-import {Logo} from '#/view/icons/Logo'
 import {Logotype} from '#/view/icons/Logotype'
 import {atoms as a, useTheme} from '#/alf'
 import {Button, ButtonText} from '#/components/Button'
@@ -226,10 +225,7 @@ export function BottomBarWeb() {
               gap: 8,
             }}>
             <View style={{flexDirection: 'row', alignItems: 'center', gap: 12}}>
-              <Logo width={32} />
-              <View style={{paddingTop: 4}}>
-                <Logotype width={80} />
-              </View>
+              <Logotype width={80} />
             </View>
 
             <View style={[a.flex_row, a.flex_wrap, a.gap_sm]}>

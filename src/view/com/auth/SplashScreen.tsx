@@ -28,9 +28,7 @@ export const SplashScreen = ({
     <CenteredView style={[a.h_full, a.flex_1]}>
       <ErrorBoundary>
         <View style={[{flex: 1}, a.justify_center, a.align_center]}>
-          <Logo width={92} fill="sky" />
-
-          <View style={[a.pb_sm, a.pt_5xl]}>
+          <View style={[a.pb_sm]}>
             <Logotype width={161} />
           </View>
 

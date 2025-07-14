@@ -60,7 +60,7 @@ export function HomeHeaderLayoutMobile({
             }}>
             <Text
               style={{
-                color: '#000080',
+                color: t.palette.default.brandText,
                 fontWeight: 'bold',
                 fontSize: 24,
               }}>
