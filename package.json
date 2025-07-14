@@ -21,7 +21,7 @@
     "prepare": "is-ci || husky install",
     "postinstall": "patch-package && yarn intl:compile",
     "build-web": "expo export:web && node ./scripts/post-web-build.js",
-    "build": "expo export --platform web",
+    "build": "expo export:web",
     "build-embed": "cd bskyembed && yarn build && yarn build-snippet && cd .. && node ./scripts/post-embed-build.js",
     "start": "expo start --dev-client",
     "start:prod": "expo start --dev-client --no-dev --minify",
