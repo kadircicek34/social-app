@@ -28,7 +28,7 @@ if (!root) throw new Error('No root element')
 initSystemColorMode()
 
 const agent = new AtpAgent({
-  service: 'https://public.api.bsky.app',
+  service: 'https://pds.aiturklaw.com',
 })
 
 render(<LandingPage />, root)
@@ -117,7 +117,7 @@ function LandingPage() {
   return (
     <main className="w-full min-h-screen flex flex-col items-center gap-8 py-14 px-4 md:pt-32 dark:bg-dimmedBgDarken dark:text-slate-200">
       <Link
-        href="https://bsky.social/about"
+        href="https://pds.aiturklaw.com/about"
         className="transition-transform hover:scale-110" />
 
       <h1 className="text-4xl font-bold text-center">Embed a Bluesky Post</h1>

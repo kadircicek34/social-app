@@ -20,9 +20,9 @@ export function Links() {
         </InlineLinkText>
         <InlineLinkText
           label="foo"
-          to="https://bsky.social"
+          to="https://pds.aiturklaw.com"
           style={[a.text_md, t.atoms.text_contrast_low]}>
-          Internal (bsky.social)
+          Internal (pds.aiturklaw.com)
         </InlineLinkText>
         <InlineLinkText
           label="foo"

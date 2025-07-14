@@ -269,7 +269,7 @@ function ProvidedHandlePage({
               lets you self-verify your identity.{' '}
               <InlineLinkText
                 label={_(msg`learn more`)}
-                to="https://bsky.social/about/blog/4-28-2023-domain-handle-tutorial"
+                to="https://pds.aiturklaw.com/about/blog/4-28-2023-domain-handle-tutorial"
                 style={[a.font_bold]}
                 disableMismatchWarning>
                 Learn more here.
@@ -508,7 +508,7 @@ function OwnHandlePage({goToServiceHandle}: {goToServiceHandle: () => void}) {
         </Animated.View>
       )}
       <Animated.View layout={native(LinearTransition)}>
-        {currentAccount?.handle?.endsWith('.bsky.social') && (
+        {currentAccount?.handle?.endsWith('.pds.aiturklaw.com') && (
           <Admonition type="info" style={[a.mb_md]}>
             <Trans>
               Your current handle{' '}

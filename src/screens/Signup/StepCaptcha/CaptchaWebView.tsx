@@ -6,7 +6,7 @@ import {ShouldStartLoadRequest} from 'react-native-webview/lib/WebViewTypes'
 import {SignupState} from '#/screens/Signup/state'
 
 const ALLOWED_HOSTS = [
-  'bsky.social',
+  'pds.aiturklaw.com',
   'bsky.app',
   'staging.bsky.app',
   'staging.bsky.dev',
