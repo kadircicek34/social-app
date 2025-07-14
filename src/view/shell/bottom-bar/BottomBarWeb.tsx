@@ -27,7 +27,7 @@ import {
   Bell_Filled_Corner0_Rounded as BellFilled,
   Bell_Stroke2_Corner0_Rounded as Bell,
 } from '#/components/icons/Bell'
-import {Brain_Stroke2_Corner0_Rounded as Brain} from '#/components/icons/Brain'
+import {Pressable} from 'react-native'
 import {
   HomeOpen_Filled_Corner0_Rounded as HomeFilled,
   HomeOpen_Stoke2_Corner0_Rounded as Home,
@@ -114,18 +114,26 @@ export function BottomBarWeb() {
               )
             }}
           </NavItem>
-          <Link
-            href="https://chat.aiturklaw.com"
+          <Pressable
+            onPress={() => {
+              // open in the current tab
+              window.location.href = 'https://chat.aiturklaw.com'
+            }}
             style={[styles.ctrl, a.pb_lg]}
-            aria-role="link"
-            aria-label="AI Chat"
+            accessibilityRole="link"
+            accessibilityLabel="AI Chat"
             accessible={true}>
             <View style={styles.ctrlIconSizingWrapper}>
-              <Brain
+              <Text
                 aria-hidden={true}
-                width={iconWidth - 1}
-                style={[styles.ctrlIcon, t.atoms.text, styles.aiIcon]}
-              />
+                style={[
+                  styles.ctrlIcon,
+                  t.atoms.text,
+                  styles.aiIcon,
+                  {fontSize: iconWidth + 2},
+                ]}>
+                🤖
+              </Text>
               <Text
                 style={{
                   position: 'absolute',
@@ -136,7 +144,7 @@ export function BottomBarWeb() {
                 AI
               </Text>
             </View>
-          </Link>
+          </Pressable>
 
           {hasSession && (
             <>
