@@ -6,7 +6,6 @@ import {useLingui} from '@lingui/react'
 import {StackActions, useNavigation} from '@react-navigation/native'
 
 import {useActorStatus} from '#/lib/actor-status'
-import {FEEDBACK_FORM_URL, HELP_DESK_URL} from '#/lib/constants'
 import {type PressableScale} from '#/lib/custom-animations/PressableScale'
 import {useNavigationTabState} from '#/lib/hooks/useNavigationTabState'
 import {getTabState, TabState} from '#/lib/routes/helpers'
@@ -236,18 +235,7 @@ let DrawerContent = ({}: React.PropsWithoutRef<{}>): React.ReactNode => {
     setDrawerOpen(false)
   }, [navigation, setDrawerOpen])
 
-  const onPressFeedback = React.useCallback(() => {
-    Linking.openURL(
-      FEEDBACK_FORM_URL({
-        email: currentAccount?.email,
-        handle: currentAccount?.handle,
-      }),
-    )
-  }, [currentAccount])
-
-  const onPressHelp = React.useCallback(() => {
-    Linking.openURL(HELP_DESK_URL)
-  }, [])
+  // Feedback and help actions removed
 
   // rendering
   // =
@@ -312,68 +300,13 @@ let DrawerContent = ({}: React.PropsWithoutRef<{}>): React.ReactNode => {
         </View>
       </ScrollView>
 
-      <DrawerFooter
-        onPressFeedback={onPressFeedback}
-        onPressHelp={onPressHelp}
-      />
+      {/* Drawer footer removed */}
     </View>
   )
 }
 DrawerContent = React.memo(DrawerContent)
 export {DrawerContent}
 
-let DrawerFooter = ({
-  onPressFeedback,
-  onPressHelp,
-}: {
-  onPressFeedback: () => void
-  onPressHelp: () => void
-}): React.ReactNode => {
-  const {_} = useLingui()
-  const insets = useSafeAreaInsets()
-  return (
-    <View
-      style={[
-        a.flex_row,
-        a.gap_sm,
-        a.flex_wrap,
-        a.pl_xl,
-        a.pt_md,
-        {
-          paddingBottom: Math.max(
-            insets.bottom + tokens.space.xs,
-            tokens.space.xl,
-          ),
-        },
-      ]}>
-      <Button
-        label={_(msg`Send feedback`)}
-        size="small"
-        variant="solid"
-        color="secondary"
-        onPress={onPressFeedback}>
-        <ButtonIcon icon={Message} position="left" />
-        <ButtonText>
-          <Trans>Feedback</Trans>
-        </ButtonText>
-      </Button>
-      <Button
-        label={_(msg`Get help`)}
-        size="small"
-        variant="outline"
-        color="secondary"
-        onPress={onPressHelp}
-        style={{
-          backgroundColor: 'transparent',
-        }}>
-        <ButtonText>
-          <Trans>Help</Trans>
-        </ButtonText>
-      </Button>
-    </View>
-  )
-}
-DrawerFooter = React.memo(DrawerFooter)
 
 interface MenuItemProps extends ComponentProps<typeof PressableScale> {
   icon: JSX.Element
@@ -658,12 +591,12 @@ function ExtraLinks() {
       <InlineLinkText
         style={[a.text_md]}
         label={_(msg`Terms of Service`)}
-        to="https://bsky.social/about/support/tos">
+        to="https://aiturklaw.com">
         <Trans>Terms of Service</Trans>
       </InlineLinkText>
       <InlineLinkText
         style={[a.text_md]}
-        to="https://bsky.social/about/support/privacy-policy"
+        to="https://aiturklaw.com"
         label={_(msg`Privacy Policy`)}>
         <Trans>Privacy Policy</Trans>
       </InlineLinkText>
