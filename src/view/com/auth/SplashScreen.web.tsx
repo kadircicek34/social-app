@@ -90,7 +90,7 @@ export const SplashScreen = ({
 
               {!kawaii && (
                 <View style={[a.pb_sm, a.pt_5xl]}>
-                  <Logotype width={161} fill={t.atoms.text.color} />
+                  <Logotype width={161} />
                 </View>
               )}
 
