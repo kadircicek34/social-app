@@ -11,6 +11,7 @@ import {ScreenTransition} from '#/screens/Login/ScreenTransition'
 import {is13, is18, useSignupContext} from '#/screens/Signup/state'
 import {Policies} from '#/screens/Signup/StepInfo/Policies'
 import {atoms as a, native} from '#/alf'
+import {Button} from '#/components/Button'
 import * as DateField from '#/components/forms/DateField'
 import {type DateFieldRef} from '#/components/forms/DateField/types'
 import {FormError} from '#/components/forms/FormError'
@@ -20,7 +21,21 @@ import {Envelope_Stroke2_Corner0_Rounded as Envelope} from '#/components/icons/E
 import {Lock_Stroke2_Corner0_Rounded as Lock} from '#/components/icons/Lock'
 import {Ticket_Stroke2_Corner0_Rounded as Ticket} from '#/components/icons/Ticket'
 import {Loader} from '#/components/Loader'
+import * as Select from '#/components/Select'
 import {BackNextButtons} from '../BackNextButtons'
+
+const TITLE_OPTIONS = [
+  {label: 'Avukat', value: 'avukat'},
+  {label: 'Profesör', value: 'professor'},
+  {label: 'Araştırma Görevlisi', value: 'research'},
+  {label: 'Hukuk Doktoru', value: 'doctor'},
+  {label: 'Akademisyen', value: 'academic'},
+  {label: 'Hakim', value: 'judge'},
+  {label: 'Savcı', value: 'prosecutor'},
+  {label: 'Noter', value: 'notary'},
+  {label: 'Hukuk Öğrencisi', value: 'student'},
+  {label: 'Diğer', value: 'other'},
+]
 
 function sanitizeDate(date: Date): Date {
   if (!date || date.toString() === 'Invalid Date') {
@@ -50,10 +65,21 @@ export function StepInfo({
   const emailValueRef = useRef<string>(state.email)
   const prevEmailValueRef = useRef<string>(state.email)
   const passwordValueRef = useRef<string>(state.password)
+  const titleValueRef = useRef<string>(state.title)
+  const barNumberValueRef = useRef<string>(state.barNumber)
+  const universityValueRef = useRef<string>(state.university)
+  const cityValueRef = useRef<string>(state.city)
+  const notaryNoValueRef = useRef<string>(state.notaryNo)
+  const studentClassValueRef = useRef<string>(state.studentClass)
 
   const emailInputRef = useRef<TextInput>(null)
   const passwordInputRef = useRef<TextInput>(null)
   const birthdateInputRef = useRef<DateFieldRef>(null)
+  const barNumberInputRef = useRef<TextInput>(null)
+  const universityInputRef = useRef<TextInput>(null)
+  const cityInputRef = useRef<TextInput>(null)
+  const notaryNoInputRef = useRef<TextInput>(null)
+  const studentClassInputRef = useRef<TextInput>(null)
 
   const [hasWarnedEmail, setHasWarnedEmail] = React.useState<boolean>(false)
 
@@ -128,6 +154,13 @@ export function StepInfo({
         field: 'password',
       })
     }
+
+    dispatch({type: 'setTitle', value: titleValueRef.current})
+    dispatch({type: 'setBarNumber', value: barNumberValueRef.current})
+    dispatch({type: 'setUniversity', value: universityValueRef.current})
+    dispatch({type: 'setCity', value: cityValueRef.current})
+    dispatch({type: 'setNotaryNo', value: notaryNoValueRef.current})
+    dispatch({type: 'setStudentClass', value: studentClassValueRef.current})
 
     dispatch({type: 'setInviteCode', value: inviteCode})
     dispatch({type: 'setEmail', value: email})
@@ -271,6 +304,132 @@ export function StepInfo({
                 maximumDate={new Date()}
               />
             </View>
+            <View>
+              <TextField.LabelText>Unvan</TextField.LabelText>
+              <Select.Root
+                value={state.title}
+                onValueChange={v => {
+                  titleValueRef.current = v
+                  dispatch({type: 'setTitle', value: v})
+                }}>
+                <Select.Trigger label="Unvan">
+                  {({props}) => (
+                    <Button
+                      {...props}
+                      size="small"
+                      variant="ghost"
+                      color="secondary">
+                      <Select.ValueText
+                        placeholder="Unvan seçiniz"
+                        style={[a.text_md]}
+                      />
+                      <Select.Icon />
+                    </Button>
+                  )}
+                </Select.Trigger>
+                <Select.Content
+                  items={TITLE_OPTIONS}
+                  renderItem={({label, value}) => (
+                    <Select.Item value={value} label={label}>
+                      <Select.ItemIndicator />
+                      <Select.ItemText>{label}</Select.ItemText>
+                    </Select.Item>
+                  )}
+                />
+              </Select.Root>
+            </View>
+            {state.title === 'avukat' && (
+              <View>
+                <TextField.LabelText>Sicil Numarası</TextField.LabelText>
+                <TextField.Root isInvalid={state.errorField === 'bar-number'}>
+                  <TextField.Input
+                    inputRef={barNumberInputRef}
+                    onChangeText={v => {
+                      barNumberValueRef.current = v
+                      dispatch({type: 'setBarNumber', value: v})
+                    }}
+                    label="Sicil No"
+                    defaultValue={state.barNumber}
+                    returnKeyType="next"
+                  />
+                </TextField.Root>
+              </View>
+            )}
+            {[
+              'professor',
+              'research',
+              'doctor',
+              'academic',
+              'student',
+            ].includes(state.title) && (
+              <View>
+                <TextField.LabelText>Üniversite</TextField.LabelText>
+                <TextField.Root isInvalid={state.errorField === 'university'}>
+                  <TextField.Input
+                    inputRef={universityInputRef}
+                    onChangeText={v => {
+                      universityValueRef.current = v
+                      dispatch({type: 'setUniversity', value: v})
+                    }}
+                    label="Üniversite"
+                    defaultValue={state.university}
+                    returnKeyType="next"
+                  />
+                </TextField.Root>
+              </View>
+            )}
+            {['judge', 'prosecutor', 'notary'].includes(state.title) && (
+              <View>
+                <TextField.LabelText>İl</TextField.LabelText>
+                <TextField.Root isInvalid={state.errorField === 'city'}>
+                  <TextField.Input
+                    inputRef={cityInputRef}
+                    onChangeText={v => {
+                      cityValueRef.current = v
+                      dispatch({type: 'setCity', value: v})
+                    }}
+                    label="İl"
+                    defaultValue={state.city}
+                    returnKeyType="next"
+                  />
+                </TextField.Root>
+              </View>
+            )}
+            {state.title === 'notary' && (
+              <View>
+                <TextField.LabelText>Kaçıncı Noter</TextField.LabelText>
+                <TextField.Root isInvalid={state.errorField === 'notary-no'}>
+                  <TextField.Input
+                    inputRef={notaryNoInputRef}
+                    onChangeText={v => {
+                      notaryNoValueRef.current = v
+                      dispatch({type: 'setNotaryNo', value: v})
+                    }}
+                    label="Noter No"
+                    defaultValue={state.notaryNo}
+                    returnKeyType="next"
+                  />
+                </TextField.Root>
+              </View>
+            )}
+            {state.title === 'student' && (
+              <View>
+                <TextField.LabelText>Sınıf</TextField.LabelText>
+                <TextField.Root
+                  isInvalid={state.errorField === 'student-class'}>
+                  <TextField.Input
+                    inputRef={studentClassInputRef}
+                    onChangeText={v => {
+                      studentClassValueRef.current = v
+                      dispatch({type: 'setStudentClass', value: v})
+                    }}
+                    label="Sınıf"
+                    defaultValue={state.studentClass}
+                    returnKeyType="next"
+                  />
+                </TextField.Root>
+              </View>
+            )}
             <Policies
               serviceDescription={state.serviceDescription}
               needsGuardian={!is18(state.dateOfBirth)}
