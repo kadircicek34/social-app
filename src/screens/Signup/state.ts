@@ -37,6 +37,12 @@ type ErrorField =
   | 'handle'
   | 'password'
   | 'date-of-birth'
+  | 'title'
+  | 'bar-number'
+  | 'university'
+  | 'city'
+  | 'notary-no'
+  | 'student-class'
 
 export type SignupState = {
   hasPrev: boolean
@@ -50,6 +56,12 @@ export type SignupState = {
   password: string
   inviteCode: string
   handle: string
+  title: string
+  barNumber: string
+  university: string
+  city: string
+  notaryNo: string
+  studentClass: string
 
   error: string
   errorField?: ErrorField
@@ -75,6 +87,12 @@ export type SignupAction =
   | {type: 'setDateOfBirth'; value: Date}
   | {type: 'setInviteCode'; value: string}
   | {type: 'setHandle'; value: string}
+  | {type: 'setTitle'; value: string}
+  | {type: 'setBarNumber'; value: string}
+  | {type: 'setUniversity'; value: string}
+  | {type: 'setCity'; value: string}
+  | {type: 'setNotaryNo'; value: string}
+  | {type: 'setStudentClass'; value: string}
   | {type: 'setError'; value: string; field?: ErrorField}
   | {type: 'clearError'}
   | {type: 'setIsLoading'; value: boolean}
@@ -93,6 +111,12 @@ export const initialState: SignupState = {
   password: '',
   handle: '',
   inviteCode: '',
+  title: '',
+  barNumber: '',
+  university: '',
+  city: '',
+  notaryNo: '',
+  studentClass: '',
 
   error: '',
   errorField: undefined,
@@ -108,6 +132,12 @@ export const initialState: SignupState = {
     handle: 0,
     password: 0,
     'date-of-birth': 0,
+    title: 0,
+    'bar-number': 0,
+    university: 0,
+    city: 0,
+    'notary-no': 0,
+    'student-class': 0,
   },
   backgroundCount: 0,
 }
@@ -177,6 +207,30 @@ export function reducer(s: SignupState, a: SignupAction): SignupState {
     }
     case 'setHandle': {
       next.handle = a.value
+      break
+    }
+    case 'setTitle': {
+      next.title = a.value
+      break
+    }
+    case 'setBarNumber': {
+      next.barNumber = a.value
+      break
+    }
+    case 'setUniversity': {
+      next.university = a.value
+      break
+    }
+    case 'setCity': {
+      next.city = a.value
+      break
+    }
+    case 'setNotaryNo': {
+      next.notaryNo = a.value
+      break
+    }
+    case 'setStudentClass': {
+      next.studentClass = a.value
       break
     }
     case 'setIsLoading': {
@@ -277,6 +331,60 @@ export function useSubmitSignup() {
           type: 'setError',
           value: _(msg`Please choose your password.`),
           field: 'password',
+        })
+      }
+      if (!state.title) {
+        dispatch({type: 'setStep', value: SignupStep.INFO})
+        return dispatch({
+          type: 'setError',
+          value: _(msg`Please select your title.`),
+          field: 'title',
+        })
+      }
+      if (state.title === 'avukat' && !state.barNumber) {
+        dispatch({type: 'setStep', value: SignupStep.INFO})
+        return dispatch({
+          type: 'setError',
+          value: _(msg`Please enter your bar number.`),
+          field: 'bar-number',
+        })
+      }
+      if (
+        ['professor', 'research', 'doctor', 'academic'].includes(state.title) &&
+        !state.university
+      ) {
+        dispatch({type: 'setStep', value: SignupStep.INFO})
+        return dispatch({
+          type: 'setError',
+          value: _(msg`Please enter your university.`),
+          field: 'university',
+        })
+      }
+      if (['judge', 'prosecutor'].includes(state.title) && !state.city) {
+        dispatch({type: 'setStep', value: SignupStep.INFO})
+        return dispatch({
+          type: 'setError',
+          value: _(msg`Please enter your city.`),
+          field: 'city',
+        })
+      }
+      if (state.title === 'notary' && (!state.city || !state.notaryNo)) {
+        dispatch({type: 'setStep', value: SignupStep.INFO})
+        return dispatch({
+          type: 'setError',
+          value: _(msg`Please enter notary information.`),
+          field: !state.city ? 'city' : 'notary-no',
+        })
+      }
+      if (
+        state.title === 'student' &&
+        (!state.university || !state.studentClass)
+      ) {
+        dispatch({type: 'setStep', value: SignupStep.INFO})
+        return dispatch({
+          type: 'setError',
+          value: _(msg`Please enter your university and class.`),
+          field: !state.university ? 'university' : 'student-class',
         })
       }
       if (!state.handle) {

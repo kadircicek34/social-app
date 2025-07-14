@@ -1,6 +1,6 @@
-# Bluesky Social App
+# Türklaw Social App
 
-Welcome friends! This is the codebase for the Bluesky Social app.
+Welcome friends! This is the codebase for the Türklaw Social app.
 
 Get the app itself:
 
