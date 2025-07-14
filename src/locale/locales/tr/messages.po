@@ -4410,7 +4410,7 @@ msgstr "Daha Fazla Bilgi Edinin"
 
 #: src/view/com/auth/SplashScreen.web.tsx:168
 msgid "Learn more about Bluesky"
-msgstr "Bluesky hakkında daha fazlasını öğren"
+msgstr "TÜRKLAW hakkında daha fazlasını öğren"
 
 #: src/view/com/auth/server-input/index.tsx:218
 msgid "Learn more about self hosting your PDS."
@@ -6454,7 +6454,7 @@ msgstr "Daha fazla yanıt oku"
 
 #: src/view/com/auth/SplashScreen.web.tsx:173
 msgid "Read the Bluesky blog"
-msgstr "Bluesky blog'unu oku"
+msgstr "TÜRKLAW blog'unu oku"
 
 #: src/screens/Signup/StepInfo/Policies.tsx:58
 #: src/screens/Signup/StepInfo/Policies.tsx:84
@@ -7216,7 +7216,7 @@ msgstr "Kullanıcının #{tag} gönderilerini gör"
 
 #: src/view/com/auth/SplashScreen.web.tsx:178
 msgid "See jobs at Bluesky"
-msgstr "Bluesky'daki iş fırsatlarını görün"
+msgstr "TÜRKLAW'daki iş fırsatlarını görün"
 
 #: src/view/screens/SavedFeeds.tsx:212
 msgid "See this guide"
@@ -7748,7 +7748,7 @@ msgstr "Listelenmeyen bir hesaba giriş yap"
 
 #: src/components/dialogs/Signin.tsx:46
 msgid "Sign in to Bluesky or create a new account"
-msgstr "Bluesky'da oturum aç veya yeni bir üyelik oluştur"
+msgstr "TÜRKLAW'a giriş yap veya yeni bir hesap oluştur"
 
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:461
 #: src/components/PostControls/PostMenu/PostMenuItems.tsx:463

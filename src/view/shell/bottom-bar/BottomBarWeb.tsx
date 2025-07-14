@@ -220,7 +220,7 @@ export function BottomBarWeb() {
             <View style={{flexDirection: 'row', alignItems: 'center', gap: 12}}>
               <Logo width={32} />
               <View style={{paddingTop: 4}}>
-                <Logotype width={80} fill={t.atoms.text.color} />
+                <Logotype width={80} />
               </View>
             </View>
 

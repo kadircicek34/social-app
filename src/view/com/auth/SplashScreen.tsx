@@ -31,7 +31,7 @@ export const SplashScreen = ({
           <Logo width={92} fill="sky" />
 
           <View style={[a.pb_sm, a.pt_5xl]}>
-            <Logotype width={161} fill={t.atoms.text.color} />
+            <Logotype width={161} />
           </View>
 
           <Text style={[a.text_md, a.font_bold, t.atoms.text_contrast_medium]}>
