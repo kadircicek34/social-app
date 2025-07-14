@@ -48,7 +48,7 @@ function HomeHeaderLayoutDesktopAndTablet({
             <View style={[a.flex_1, a.align_center, a.justify_center]}>
               <Text
                 style={{
-                  color: '#000080',
+                  color: t.palette.default.brandText,
                   fontWeight: 'bold',
                   fontSize: 24,
                 }}>

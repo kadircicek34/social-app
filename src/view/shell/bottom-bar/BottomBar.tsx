@@ -31,7 +31,6 @@ import {useShellLayout} from '#/state/shell/shell-layout'
 import {useCloseAllActiveElements} from '#/state/util'
 import {Text} from '#/view/com/util/text/Text'
 import {UserAvatar} from '#/view/com/util/UserAvatar'
-import {Logo} from '#/view/icons/Logo'
 import {Logotype} from '#/view/icons/Logotype'
 import {atoms as a} from '#/alf'
 import {Button, ButtonText} from '#/components/Button'
@@ -365,12 +364,8 @@ export function BottomBar({navigation}: BottomTabBarProps) {
                 paddingRight: 6,
                 gap: 8,
               }}>
-              <View
-                style={{flexDirection: 'row', alignItems: 'center', gap: 8}}>
-                <Logo width={28} />
-                <View style={{paddingTop: 4}}>
-                  <Logotype width={80} />
-                </View>
+              <View style={{flexDirection: 'row', alignItems: 'center', gap: 8}}>
+                <Logotype width={80} />
               </View>
 
               <View style={[a.flex_row, a.flex_wrap, a.gap_sm]}>
