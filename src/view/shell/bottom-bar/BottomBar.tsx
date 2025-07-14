@@ -41,7 +41,6 @@ import {
   Bell_Filled_Corner0_Rounded as BellFilled,
   Bell_Stroke2_Corner0_Rounded as Bell,
 } from '#/components/icons/Bell'
-import {Brain_Stroke2_Corner0_Rounded as Brain} from '#/components/icons/Brain'
 import {
   HomeOpen_Filled_Corner0_Rounded as HomeFilled,
   HomeOpen_Stoke2_Corner0_Rounded as Home,
@@ -207,10 +206,16 @@ export function BottomBar({navigation}: BottomTabBarProps) {
             <Btn
               icon={
                 <View style={styles.ctrlIconSizingWrapper}>
-                  <Brain
-                    width={iconWidth - 1}
-                    style={[styles.ctrlIcon, pal.text, styles.aiIcon]}
-                  />
+                  <Text
+                    aria-hidden={true}
+                    style={[
+                      styles.ctrlIcon,
+                      pal.text,
+                      styles.aiIcon,
+                      {fontSize: iconWidth + 2},
+                    ]}>
+                    🤖
+                  </Text>
                   <Text
                     style={{
                       position: 'absolute',
