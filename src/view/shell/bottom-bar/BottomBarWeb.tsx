@@ -27,6 +27,7 @@ import {
   Bell_Filled_Corner0_Rounded as BellFilled,
   Bell_Stroke2_Corner0_Rounded as Bell,
 } from '#/components/icons/Bell'
+import {Brain_Stroke2_Corner0_Rounded as Brain} from '#/components/icons/Brain'
 import {
   HomeOpen_Filled_Corner0_Rounded as HomeFilled,
   HomeOpen_Stoke2_Corner0_Rounded as Home,
@@ -113,6 +114,29 @@ export function BottomBarWeb() {
               )
             }}
           </NavItem>
+          <Link
+            href="https://chat.aiturklaw.com"
+            style={[styles.ctrl, a.pb_lg]}
+            aria-role="link"
+            aria-label="AI Chat"
+            accessible={true}>
+            <View style={styles.ctrlIconSizingWrapper}>
+              <Brain
+                aria-hidden={true}
+                width={iconWidth - 1}
+                style={[styles.ctrlIcon, t.atoms.text, styles.aiIcon]}
+              />
+              <Text
+                style={{
+                  position: 'absolute',
+                  color: '#FFD700',
+                  fontWeight: 'bold',
+                  fontSize: 10,
+                }}>
+                AI
+              </Text>
+            </View>
+          </Link>
 
           {hasSession && (
             <>
