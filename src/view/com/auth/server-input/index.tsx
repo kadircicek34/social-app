@@ -172,7 +172,7 @@ function DialogInner({
                 testID="customServerTextInput"
                 value={customAddress}
                 onChangeText={setCustomAddress}
-                label="my-server.com"
+                label="pds.aiturklaw.com"
                 accessibilityLabelledBy="address-input-label"
                 autoCapitalize="none"
                 keyboardType="url"

@@ -2,12 +2,12 @@ import {IsValidHandle, validateServiceHandle} from '#/lib/strings/handles'
 
 describe('handle validation', () => {
   const valid = [
-    ['ali', 'bsky.social'],
-    ['alice', 'bsky.social'],
-    ['a-lice', 'bsky.social'],
-    ['a-----lice', 'bsky.social'],
-    ['123', 'bsky.social'],
-    ['123456789012345678', 'bsky.social'],
+    ['ali', 'pds.aiturklaw.com'],
+    ['alice', 'pds.aiturklaw.com'],
+    ['a-lice', 'pds.aiturklaw.com'],
+    ['a-----lice', 'pds.aiturklaw.com'],
+    ['123', 'pds.aiturklaw.com'],
+    ['123456789012345678', 'pds.aiturklaw.com'],
     ['alice', 'custom-pds.com'],
     ['alice', 'my-custom-pds-with-long-name.social'],
     ['123456789012345678', 'my-custom-pds-with-long-name.social'],
@@ -18,11 +18,11 @@ describe('handle validation', () => {
   })
 
   const invalid = [
-    ['al', 'bsky.social', 'frontLength'],
-    ['-alice', 'bsky.social', 'hyphenStartOrEnd'],
-    ['alice-', 'bsky.social', 'hyphenStartOrEnd'],
-    ['%%%', 'bsky.social', 'handleChars'],
-    ['1234567890123456789', 'bsky.social', 'frontLength'],
+    ['al', 'pds.aiturklaw.com', 'frontLength'],
+    ['-alice', 'pds.aiturklaw.com', 'hyphenStartOrEnd'],
+    ['alice-', 'pds.aiturklaw.com', 'hyphenStartOrEnd'],
+    ['%%%', 'pds.aiturklaw.com', 'handleChars'],
+    ['1234567890123456789', 'pds.aiturklaw.com', 'frontLength'],
     [
       '1234567890123456789',
       'my-custom-pds-with-long-name.social',

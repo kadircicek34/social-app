@@ -10,7 +10,7 @@ import {logger} from '#/logger'
 export const BSKY_APP_HOST = 'https://bsky.app'
 const BSKY_TRUSTED_HOSTS = [
   'bsky\\.app',
-  'bsky\\.social',
+  'pds\\.aiturklaw\\.com',
   'blueskyweb\\.xyz',
   'blueskyweb\\.zendesk\\.com',
   ...(__DEV__ ? ['localhost:19006', 'localhost:8100'] : []),
@@ -51,11 +51,8 @@ export function makeRecordUri(
 export function toNiceDomain(url: string): string {
   try {
     const urlp = new URL(url)
-    if (`https://${urlp.host}` === BSKY_SERVICE) {
-      return 'Bluesky Social'
-    }
     return urlp.host ? urlp.host : url
-  } catch (e) {
+  } catch {
     return url
   }
 }

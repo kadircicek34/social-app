@@ -4698,13 +4698,13 @@ msgid "Logged-out visibility"
 msgstr "Gwelededd wedi allgofnodi"
 
 #: src/view/shell/desktop/RightNav.tsx:130
-msgid "Logo by @sawaratsuki.bsky.social"
-msgstr "Logo gan @sawaratsuki.bsky.social"
+msgid "Logo by @sawaratsuki.pds.aiturklaw.com"
+msgstr "Logo gan @sawaratsuki.pds.aiturklaw.com"
 
 #: src/view/shell/desktop/RightNav.tsx:127
 #: src/view/shell/Drawer.tsx:672
-msgid "Logo by <0>@sawaratsuki.bsky.social</0>"
-msgstr "Logo gan <0>@sawaratsuki.bsky.social</0>"
+msgid "Logo by <0>@sawaratsuki.pds.aiturklaw.com</0>"
+msgstr "Logo gan <0>@sawaratsuki.pds.aiturklaw.com</0>"
 
 #: src/components/RichTextTag.tsx:53
 msgid "Long press to open tag menu for #{tag}"

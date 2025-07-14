@@ -4,8 +4,8 @@ import {type AppBskyActorDefs} from '@atproto/api'
 export const LOCAL_DEV_SERVICE =
   Platform.OS === 'android' ? 'http://10.0.2.2:2583' : 'http://localhost:2583'
 export const STAGING_SERVICE = 'https://staging.bsky.dev'
-export const BSKY_SERVICE = 'https://bsky.social'
-export const PUBLIC_BSKY_SERVICE = 'https://public.api.bsky.app'
+export const BSKY_SERVICE = 'https://pds.aiturklaw.com'
+export const PUBLIC_BSKY_SERVICE = 'https://pds.aiturklaw.com'
 export const DEFAULT_SERVICE = BSKY_SERVICE
 const HELP_DESK_LANG = 'en-us'
 export const HELP_DESK_URL = `https://blueskyweb.zendesk.com/hc/${HELP_DESK_LANG}`
@@ -30,8 +30,8 @@ export const DISCOVER_DEBUG_DIDS: Record<string, true> = {
   'did:plc:vpkhqolt662uhesyj6nxm7ys': true, // why.bsky.team
   'did:plc:3jpt2mvvsumj2r7eqk4gzzjz': true, // esb.lol
   'did:plc:vjug55kidv6sye7ykr5faxxn': true, // emilyliu.me
-  'did:plc:tgqseeot47ymot4zro244fj3': true, // iwsmith.bsky.social
-  'did:plc:2dzyut5lxna5ljiaasgeuffz': true, // mrnuma.bsky.social
+  'did:plc:tgqseeot47ymot4zro244fj3': true, // iwsmith.pds.aiturklaw.com
+  'did:plc:2dzyut5lxna5ljiaasgeuffz': true, // mrnuma.pds.aiturklaw.com
 }
 
 const BASE_FEEDBACK_FORM_URL = `${HELP_DESK_URL}/requests/new`
@@ -197,10 +197,10 @@ export const EMOJI_REACTION_LIMIT = 5
 export const urls = {
   website: {
     blog: {
-      initialVerificationAnnouncement: `https://bsky.social/about/blog/04-21-2025-verification`,
+      initialVerificationAnnouncement: `https://pds.aiturklaw.com/about/blog/04-21-2025-verification`,
     },
   },
 }
 
-export const PUBLIC_APPVIEW_DID = 'did:web:api.bsky.app'
+export const PUBLIC_APPVIEW_DID = 'did:web:pds.aiturklaw.com'
 export const PUBLIC_STAGING_APPVIEW_DID = 'did:web:api.staging.bsky.dev'

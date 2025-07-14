@@ -111,9 +111,9 @@ export function DesktopRightNav({routeName}: {routeName: string}) {
           <Trans>
             Logo by{' '}
             <InlineLinkText
-              label={_(msg`Logo by @sawaratsuki.bsky.social`)}
-              to="/profile/sawaratsuki.bsky.social">
-              @sawaratsuki.bsky.social
+              label={_(msg`Logo by @sawaratsuki.pds.aiturklaw.com`)}
+              to="/profile/sawaratsuki.pds.aiturklaw.com">
+              @sawaratsuki.pds.aiturklaw.com
             </InlineLinkText>
           </Trans>
         </Text>
