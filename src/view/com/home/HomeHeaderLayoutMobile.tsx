@@ -10,7 +10,7 @@ import {useMinimalShellHeaderTransform} from '#/lib/hooks/useMinimalShellTransfo
 import {emitSoftReset} from '#/state/events'
 import {useSession} from '#/state/session'
 import {useShellLayout} from '#/state/shell/shell-layout'
-import {Logo} from '#/view/icons/Logo'
+import {Text} from '#/view/com/util/text/Text'
 import {atoms as a, useTheme} from '#/alf'
 import {ButtonIcon} from '#/components/Button'
 import {Hashtag_Stroke2_Corner0_Rounded as FeedsIcon} from '#/components/icons/Hashtag'
@@ -58,7 +58,14 @@ export function HomeHeaderLayoutMobile({
               playHaptic('Light')
               emitSoftReset()
             }}>
-            <Logo width={30} />
+            <Text
+              style={{
+                color: '#000080',
+                fontWeight: 'bold',
+                fontSize: 24,
+              }}>
+              TÜRKLAW
+            </Text>
           </PressableScale>
         </View>
 

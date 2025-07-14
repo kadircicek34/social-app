@@ -15,6 +15,7 @@ import {useDedupe} from '#/lib/hooks/useDedupe'
 import {useHideBottomBarBorder} from '#/lib/hooks/useHideBottomBarBorder'
 import {useMinimalShellFooterTransform} from '#/lib/hooks/useMinimalShellTransform'
 import {useNavigationTabState} from '#/lib/hooks/useNavigationTabState'
+import {useOpenLink} from '#/lib/hooks/useOpenLink'
 import {usePalette} from '#/lib/hooks/usePalette'
 import {clamp} from '#/lib/numbers'
 import {getTabState, TabState} from '#/lib/routes/helpers'
@@ -40,6 +41,7 @@ import {
   Bell_Filled_Corner0_Rounded as BellFilled,
   Bell_Stroke2_Corner0_Rounded as Bell,
 } from '#/components/icons/Bell'
+import {Brain_Stroke2_Corner0_Rounded as Brain} from '#/components/icons/Brain'
 import {
   HomeOpen_Filled_Corner0_Rounded as HomeFilled,
   HomeOpen_Stoke2_Corner0_Rounded as Home,
@@ -121,6 +123,10 @@ export function BottomBar({navigation}: BottomTabBarProps) {
   )
   const onPressHome = useCallback(() => onPressTab('Home'), [onPressTab])
   const onPressSearch = useCallback(() => onPressTab('Search'), [onPressTab])
+  const openLink = useOpenLink()
+  const onPressAI = useCallback(() => {
+    openLink('https://chat.aiturklaw.com')
+  }, [openLink])
   const onPressNotifications = useCallback(
     () => onPressTab('Notifications'),
     [onPressTab],
@@ -197,6 +203,29 @@ export function BottomBar({navigation}: BottomTabBarProps) {
               accessibilityRole="search"
               accessibilityLabel={_(msg`Search`)}
               accessibilityHint=""
+            />
+            <Btn
+              icon={
+                <View style={styles.ctrlIconSizingWrapper}>
+                  <Brain
+                    width={iconWidth - 1}
+                    style={[styles.ctrlIcon, pal.text, styles.aiIcon]}
+                  />
+                  <Text
+                    style={{
+                      position: 'absolute',
+                      color: '#FFD700',
+                      fontWeight: 'bold',
+                      fontSize: 10,
+                    }}>
+                    AI
+                  </Text>
+                </View>
+              }
+              onPress={onPressAI}
+              accessibilityRole="link"
+              accessibilityLabel="AI Chat"
+              accessibilityHint="Opens AI chat in browser"
             />
             <Btn
               testID="bottomBarMessagesBtn"

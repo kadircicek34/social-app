@@ -1,13 +1,12 @@
-import React from 'react'
 import {View} from 'react-native'
 import {msg} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
+import type React from 'react'
 
-import {useKawaiiMode} from '#/state/preferences/kawaii'
 import {useSession} from '#/state/session'
 import {useShellLayout} from '#/state/shell/shell-layout'
 import {HomeHeaderLayoutMobile} from '#/view/com/home/HomeHeaderLayoutMobile'
-import {Logo} from '#/view/icons/Logo'
+import {Text} from '#/view/com/util/text/Text'
 import {atoms as a, useBreakpoints, useGutters, useTheme} from '#/alf'
 import {ButtonIcon} from '#/components/Button'
 import {Hashtag_Stroke2_Corner0_Rounded as FeedsIcon} from '#/components/icons/Hashtag'
@@ -37,7 +36,6 @@ function HomeHeaderLayoutDesktopAndTablet({
   const {headerHeight} = useShellLayout()
   const {hasSession} = useSession()
   const {_} = useLingui()
-  const kawaii = useKawaiiMode()
   const gutters = useGutters([0, 'base'])
 
   return (
@@ -48,7 +46,14 @@ function HomeHeaderLayoutDesktopAndTablet({
             style={[a.flex_row, a.align_center, gutters, a.pt_md, t.atoms.bg]}>
             <View style={{width: 34}} />
             <View style={[a.flex_1, a.align_center, a.justify_center]}>
-              <Logo width={kawaii ? 60 : 28} />
+              <Text
+                style={{
+                  color: '#000080',
+                  fontWeight: 'bold',
+                  fontSize: 24,
+                }}>
+                TÜRKLAW
+              </Text>
             </View>
             <Link
               to="/feeds"
