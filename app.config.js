@@ -1,10 +1,10 @@
-const pkg = require('./package.json');
+const pkg = require('./package.json')
 
 module.exports = {
   expo: {
-    name: 'Bluesky',
-    slug: 'bluesky',
+    name: 'TÜRKLAW — Sosyal Medya',
+    slug: 'turklaw-sosyal',
     version: pkg.version,
     platforms: ['web'],
   },
-};
+}
