@@ -36,6 +36,7 @@ import {
   type MyProfileTabNavigatorParams,
   type NotificationsTabNavigatorParams,
   type SearchTabNavigatorParams,
+  type JobsTabNavigatorParams,
 } from '#/lib/routes/types'
 import {type RouteParams, type State} from '#/lib/routes/types'
 import {attachRouteToLogEvents, logEvent} from '#/lib/statsig/statsig'
@@ -52,6 +53,7 @@ import {CommunityGuidelinesScreen} from '#/view/screens/CommunityGuidelines'
 import {CopyrightPolicyScreen} from '#/view/screens/CopyrightPolicy'
 import {DebugModScreen} from '#/view/screens/DebugMod'
 import {FeedsScreen} from '#/view/screens/Feeds'
+import JobsScreen from '#/screens/Jobs'
 import {HomeScreen} from '#/view/screens/Home'
 import {ListsScreen} from '#/view/screens/Lists'
 import {LogScreen} from '#/view/screens/Log'
@@ -147,6 +149,7 @@ const MyProfileTab =
   createNativeStackNavigatorWithAuth<MyProfileTabNavigatorParams>()
 const MessagesTab =
   createNativeStackNavigatorWithAuth<MessagesTabNavigatorParams>()
+const JobsTab = createNativeStackNavigatorWithAuth<JobsTabNavigatorParams>()
 const Flat = createNativeStackNavigatorWithAuth<FlatNavigatorParams>()
 const Tab = createBottomTabNavigator<BottomTabNavigatorParams>()
 
@@ -631,6 +634,7 @@ function TabsNavigator() {
         name="NotificationsTab"
         getComponent={() => NotificationsTabNavigator}
       />
+      <Tab.Screen name="JobsTab" getComponent={() => JobsTabNavigator} />
       <Tab.Screen
         name="MyProfileTab"
         getComponent={() => MyProfileTabNavigator}
@@ -724,6 +728,16 @@ function MessagesTabNavigator() {
   )
 }
 
+function JobsTabNavigator() {
+  const t = useTheme()
+  return (
+    <JobsTab.Navigator screenOptions={screenOptions(t)} initialRouteName="Jobs">
+      <JobsTab.Screen name="Jobs" getComponent={() => JobsScreen} />
+      {commonScreens(JobsTab as typeof Flat)}
+    </JobsTab.Navigator>
+  )
+}
+
 /**
  * The FlatNavigator is used by Web to represent the routes
  * in a single ("flat") stack.
@@ -757,6 +771,11 @@ const FlatNavigator = () => {
         name="Messages"
         getComponent={() => MessagesScreen}
         options={{title: title(msg`Messages`), requireAuth: true}}
+      />
+      <Flat.Screen
+        name="Jobs"
+        getComponent={() => JobsScreen}
+        options={{title: title(msg`Jobs`)}}
       />
       <Flat.Screen
         name="Start"

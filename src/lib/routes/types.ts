@@ -82,6 +82,7 @@ export type CommonNavigatorParams = {
   StarterPackWizard: undefined
   StarterPackEdit: {rkey?: string}
   VideoFeed: VideoFeedSourceContext
+  Jobs: undefined
 }
 
 export type BottomTabNavigatorParams = CommonNavigatorParams & {
@@ -90,7 +91,8 @@ export type BottomTabNavigatorParams = CommonNavigatorParams & {
   NotificationsTab: undefined
   MyProfileTab: undefined
   MessagesTab: undefined
-}
+  JobsTab: undefined
+  }
 
 export type HomeTabNavigatorParams = CommonNavigatorParams & {
   Home: undefined
@@ -112,12 +114,17 @@ export type MessagesTabNavigatorParams = CommonNavigatorParams & {
   Messages: {pushToConversation?: string; animation?: 'push' | 'pop'}
 }
 
+export type JobsTabNavigatorParams = CommonNavigatorParams & {
+  Jobs: undefined
+}
+
 export type FlatNavigatorParams = CommonNavigatorParams & {
   Home: undefined
   Search: {q?: string}
   Feeds: undefined
   Notifications: undefined
   Messages: {pushToConversation?: string; animation?: 'push' | 'pop'}
+  Jobs: undefined
 }
 
 export type AllNavigatorParams = CommonNavigatorParams & {
@@ -131,6 +138,8 @@ export type AllNavigatorParams = CommonNavigatorParams & {
   MyProfileTab: undefined
   MessagesTab: undefined
   Messages: {animation?: 'push' | 'pop'}
+  JobsTab: undefined
+  Jobs: undefined
 }
 
 // NOTE
