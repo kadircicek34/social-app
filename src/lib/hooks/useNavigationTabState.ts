@@ -9,6 +9,7 @@ export function useNavigationTabState() {
       isAtSearch: getTabState(state, 'Search') !== TabState.Outside,
       // FeedsTab no longer exists, but this check works for `Feeds` screen as well
       isAtFeeds: getTabState(state, 'Feeds') !== TabState.Outside,
+      isAtJobs: getTabState(state, 'Jobs') !== TabState.Outside,
       isAtNotifications:
         getTabState(state, 'Notifications') !== TabState.Outside,
       isAtMyProfile: getTabState(state, 'MyProfile') !== TabState.Outside,
@@ -19,6 +20,7 @@ export function useNavigationTabState() {
       !res.isAtHome &&
       !res.isAtSearch &&
       !res.isAtFeeds &&
+      !res.isAtJobs &&
       !res.isAtNotifications &&
       !res.isAtMyProfile &&
       !res.isAtMessages

@@ -50,10 +50,18 @@ import {
   Message_Stroke2_Corner0_Rounded as Message,
   Message_Stroke2_Corner0_Rounded_Filled as MessageFilled,
 } from '#/components/icons/Message'
+import {Hashtag_Stroke2_Corner0_Rounded as Hashtag} from '#/components/icons/Hashtag'
+import {Briefcase_Stroke2_Corner0_Rounded as Briefcase} from '#/components/icons/Briefcase'
 import {useDemoMode} from '#/storage/hooks/demo-mode'
 import {styles} from './BottomBarStyles'
 
-type TabOptions = 'Home' | 'Search' | 'Messages' | 'Notifications' | 'MyProfile'
+type TabOptions =
+  | 'Home'
+  | 'Search'
+  | 'Jobs'
+  | 'Messages'
+  | 'Notifications'
+  | 'MyProfile'
 
 export function BottomBar({navigation}: BottomTabBarProps) {
   const {hasSession, currentAccount} = useSession()
@@ -121,6 +129,8 @@ export function BottomBar({navigation}: BottomTabBarProps) {
   )
   const onPressHome = useCallback(() => onPressTab('Home'), [onPressTab])
   const onPressSearch = useCallback(() => onPressTab('Search'), [onPressTab])
+  const onPressFeeds = useCallback(() => navigation.navigate('Feeds'), [navigation])
+  const onPressJobs = useCallback(() => onPressTab('Jobs'), [onPressTab])
   const openLink = useOpenLink()
   const onPressAI = useCallback(() => {
     openLink('https://chat.aiturklaw.com')
@@ -232,6 +242,12 @@ export function BottomBar({navigation}: BottomTabBarProps) {
               accessibilityHint="Opens AI chat in browser"
             />
             <Btn
+              icon={<Hashtag width={iconWidth} style={[styles.ctrlIcon, pal.text]} />}
+              onPress={onPressFeeds}
+              accessibilityRole="tab"
+              accessibilityLabel={_(msg`Feeds`)}
+            />
+            <Btn
               testID="bottomBarMessagesBtn"
               icon={
                 isAtMessages ? (
@@ -262,6 +278,12 @@ export function BottomBar({navigation}: BottomTabBarProps) {
                     )
                   : ''
               }
+            />
+            <Btn
+              icon={<Briefcase width={iconWidth} style={[styles.ctrlIcon, pal.text]} />}
+              onPress={onPressJobs}
+              accessibilityRole="tab"
+              accessibilityLabel={_(msg`Jobs`)}
             />
             <Btn
               testID="bottomBarNotificationsBtn"

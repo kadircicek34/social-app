@@ -78,7 +78,11 @@ function Inner() {
               ))
           ) : !trending?.topics ? null : (
             <>
-              {trending.topics.slice(0, TRENDING_LIMIT).map(topic => (
+              {trending.topics
+                .slice()
+                .sort((a, b) => (b.postCount ?? 0) - (a.postCount ?? 0))
+                .slice(0, TRENDING_LIMIT)
+                .map(topic => (
                 <TrendingTopicLink
                   key={topic.link}
                   topic={topic}
@@ -98,7 +102,7 @@ function Inner() {
                     />
                   )}
                 </TrendingTopicLink>
-              ))}
+                ))}
             </>
           )}
         </View>

@@ -13,7 +13,6 @@ import {useShellLayout} from '#/state/shell/shell-layout'
 import {Text} from '#/view/com/util/text/Text'
 import {atoms as a, useTheme} from '#/alf'
 import {ButtonIcon} from '#/components/Button'
-import {Hashtag_Stroke2_Corner0_Rounded as FeedsIcon} from '#/components/icons/Hashtag'
 import * as Layout from '#/components/Layout'
 import {Link} from '#/components/Link'
 
@@ -69,25 +68,7 @@ export function HomeHeaderLayoutMobile({
           </PressableScale>
         </View>
 
-        <Layout.Header.Slot>
-          {hasSession && (
-            <Link
-              testID="viewHeaderHomeFeedPrefsBtn"
-              to={{screen: 'Feeds'}}
-              hitSlop={HITSLOP_10}
-              label={_(msg`View your feeds and explore more`)}
-              size="small"
-              variant="ghost"
-              color="secondary"
-              shape="square"
-              style={[
-                a.justify_center,
-                {marginRight: -Layout.BUTTON_VISUAL_ALIGNMENT_OFFSET},
-              ]}>
-              <ButtonIcon icon={FeedsIcon} size="lg" />
-            </Link>
-          )}
-        </Layout.Header.Slot>
+        <Layout.Header.Slot />
       </Layout.Header.Outer>
       {children}
     </Animated.View>
