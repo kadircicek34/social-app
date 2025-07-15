@@ -38,20 +38,24 @@ function Inner() {
     ))
   ) : error || !trending?.trends || noTopics ? null : (
     <>
-      {trending.trends.map((trend, index) => (
-        <TrendRow
-          key={trend.link}
-          trend={trend}
-          rank={index + 1}
-          onPress={() => {
-            logger.metric(
-              'trendingTopic:click',
-              {context: 'explore'},
-              {statsig: true},
-            )
-          }}
-        />
-      ))}
+      {trending.trends
+        .slice()
+        .sort((a, b) => (b.postCount ?? 0) - (a.postCount ?? 0))
+        .slice(0, 15)
+        .map((trend, index) => (
+          <TrendRow
+            key={trend.link}
+            trend={trend}
+            rank={index + 1}
+            onPress={() => {
+              logger.metric(
+                'trendingTopic:click',
+                {context: 'explore'},
+                {statsig: true},
+              )
+            }}
+          />
+        ))}
     </>
   )
 }
