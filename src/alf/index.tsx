@@ -142,6 +142,9 @@ export function useTheme(theme?: ThemeName) {
     if (!alf) {
       return defaultTheme
     }
-    return theme ? alf.themes[theme] : alf.theme
+    if (theme) {
+      return alf.themes[theme] ?? defaultTheme
+    }
+    return alf.theme ?? defaultTheme
   }, [theme, alf])
 }
