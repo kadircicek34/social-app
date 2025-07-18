@@ -274,7 +274,7 @@ let PagerTabBar = ({
   return (
     <Animated.View
       pointerEvents={isIOS ? 'auto' : 'box-none'}
-      style={[styles.tabBarMobile, headerTransform, t.atoms.bg]}>
+      style={[styles.tabBarMobile, headerTransform, t.atoms?.bg]}>
       <View
         ref={headerRef}
         pointerEvents={isIOS ? 'auto' : 'box-none'}

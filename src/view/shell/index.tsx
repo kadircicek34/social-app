@@ -174,7 +174,7 @@ export const Shell: React.FC = function ShellImpl() {
   }, [t])
 
   return (
-    <View testID="mobileShellView" style={[a.h_full, t.atoms.bg]}>
+    <View testID="mobileShellView" style={[a.h_full, t.atoms?.bg]}>
       <SystemBars
         style={{
           statusBar:

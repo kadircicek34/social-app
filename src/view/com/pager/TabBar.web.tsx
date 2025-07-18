@@ -92,7 +92,7 @@ export function TabBar({
   return (
     <View
       testID={testID}
-      style={[t.atoms.bg, styles.outer]}
+      style={[t.atoms?.bg, styles.outer]}
       accessibilityRole="tablist">
       <DraggableScrollView
         testID={`${testID}-selector`}
@@ -108,7 +108,7 @@ export function TabBar({
               key={`${item}-${i}`}
               ref={node => (itemRefs.current[i] = node as any)}
               style={styles.item}
-              hoverStyle={t.atoms.bg_contrast_25}
+              hoverStyle={t.atoms?.bg_contrast_25}
               onPress={() => onPressItem(i)}
               accessibilityRole="tab">
               <View style={styles.itemInner}>

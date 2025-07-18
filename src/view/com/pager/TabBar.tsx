@@ -313,7 +313,7 @@ export function TabBar({
   return (
     <View
       testID={testID}
-      style={[t.atoms.bg, a.flex_row]}
+      style={[t.atoms?.bg, a.flex_row]}
       accessibilityRole="tablist">
       <BlockDrawerGesture>
         <ScrollView
@@ -424,7 +424,7 @@ function TabBarItem({
       <PressableWithHover
         testID={`${testID}-selector-${index}`}
         style={styles.item}
-        hoverStyle={t.atoms.bg_contrast_25}
+        hoverStyle={t.atoms?.bg_contrast_25}
         onPress={() => onPressItem(index)}
         accessibilityRole="tab">
         <Animated.View style={[style, styles.itemInner]}>

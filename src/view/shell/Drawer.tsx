@@ -1,5 +1,5 @@
 import React, {type ComponentProps} from 'react'
-import {Linking, ScrollView, TouchableOpacity, View} from 'react-native'
+import {ScrollView, TouchableOpacity, View} from 'react-native'
 import {useSafeAreaInsets} from 'react-native-safe-area-context'
 import {msg, Plural, plural, Trans} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
@@ -22,8 +22,8 @@ import {useSetDrawerOpen} from '#/state/shell'
 import {formatCount} from '#/view/com/util/numeric/format'
 import {UserAvatar} from '#/view/com/util/UserAvatar'
 import {NavSignupCard} from '#/view/shell/NavSignupCard'
-import {atoms as a, tokens, useTheme, web} from '#/alf'
-import {Button, ButtonIcon, ButtonText} from '#/components/Button'
+import {atoms as a, useTheme, web} from '#/alf'
+import {Button} from '#/components/Button'
 import {Divider} from '#/components/Divider'
 import {
   Bell_Filled_Corner0_Rounded as BellFilled,
@@ -243,7 +243,7 @@ let DrawerContent = ({}: React.PropsWithoutRef<{}>): React.ReactNode => {
   return (
     <View
       testID="drawer"
-      style={[a.flex_1, a.border_r, t.atoms.bg, t.atoms.border_contrast_low]}>
+      style={[a.flex_1, a.border_r, t.atoms?.bg, t.atoms?.border_contrast_low]}>
       <ScrollView
         style={[a.flex_1]}
         contentContainerStyle={[
@@ -306,7 +306,6 @@ let DrawerContent = ({}: React.PropsWithoutRef<{}>): React.ReactNode => {
 }
 DrawerContent = React.memo(DrawerContent)
 export {DrawerContent}
-
 
 interface MenuItemProps extends ComponentProps<typeof PressableScale> {
   icon: JSX.Element

@@ -62,7 +62,7 @@ export function useOpenLink() {
             WebBrowser.openBrowserAsync(url, {
               presentationStyle:
                 WebBrowser.WebBrowserPresentationStyle.PAGE_SHEET,
-              toolbarColor: t.atoms.bg.backgroundColor,
+              toolbarColor: t.atoms?.bg?.backgroundColor,
               controlsColor: t.palette.primary_500,
               createTask: false,
             }).catch(err => {

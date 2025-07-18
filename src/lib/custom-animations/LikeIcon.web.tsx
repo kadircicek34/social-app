@@ -103,7 +103,7 @@ export function AnimatedLikeIcon({
         ref={circle2Ref}
         style={{
           position: 'absolute',
-          backgroundColor: t.atoms.bg.backgroundColor,
+          backgroundColor: t.atoms?.bg?.backgroundColor,
           top: 0,
           left: 0,
           width: size,
