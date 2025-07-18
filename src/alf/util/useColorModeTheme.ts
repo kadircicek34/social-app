@@ -55,12 +55,15 @@ function updateDocument(theme: ThemeName) {
 }
 
 export function getBackgroundColor(theme: ThemeName): string {
+  const fallback = '#000'
   switch (theme) {
     case 'light':
-      return light.atoms.bg.backgroundColor
+      return light?.atoms?.bg?.backgroundColor ?? fallback
     case 'dark':
-      return dark.atoms.bg.backgroundColor
+      return dark?.atoms?.bg?.backgroundColor ?? fallback
     case 'dim':
-      return dim.atoms.bg.backgroundColor
+      return dim?.atoms?.bg?.backgroundColor ?? fallback
+    default:
+      return fallback
   }
 }
