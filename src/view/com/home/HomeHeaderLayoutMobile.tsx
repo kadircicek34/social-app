@@ -1,20 +1,15 @@
 import {View} from 'react-native'
 import Animated from 'react-native-reanimated'
-import {msg} from '@lingui/macro'
-import {useLingui} from '@lingui/react'
 
-import {HITSLOP_10} from '#/lib/constants'
 import {PressableScale} from '#/lib/custom-animations/PressableScale'
 import {useHaptics} from '#/lib/haptics'
 import {useMinimalShellHeaderTransform} from '#/lib/hooks/useMinimalShellTransform'
+import {useTheme} from '#/lib/ThemeContext'
 import {emitSoftReset} from '#/state/events'
-import {useSession} from '#/state/session'
 import {useShellLayout} from '#/state/shell/shell-layout'
 import {Text} from '#/view/com/util/text/Text'
-import {atoms as a, useTheme} from '#/alf'
-import {ButtonIcon} from '#/components/Button'
+import {atoms as a} from '#/alf'
 import * as Layout from '#/components/Layout'
-import {Link} from '#/components/Link'
 
 export function HomeHeaderLayoutMobile({
   children,
@@ -23,10 +18,8 @@ export function HomeHeaderLayoutMobile({
   tabBarAnchor: JSX.Element | null | undefined
 }) {
   const t = useTheme()
-  const {_} = useLingui()
   const {headerHeight} = useShellLayout()
   const headerMinimalShellTransform = useMinimalShellHeaderTransform()
-  const {hasSession} = useSession()
   const playHaptic = useHaptics()
 
   return (
