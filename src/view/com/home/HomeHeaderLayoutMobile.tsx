@@ -7,7 +7,7 @@ import {useMinimalShellHeaderTransform} from '#/lib/hooks/useMinimalShellTransfo
 import {emitSoftReset} from '#/state/events'
 import {useShellLayout} from '#/state/shell/shell-layout'
 import {Text} from '#/view/com/util/text/Text'
-import {useTheme} from '#/alf'
+import {useTheme} from '#/lib/ThemeContext'
 import {atoms as a} from '#/alf'
 import * as Layout from '#/components/Layout'
 
