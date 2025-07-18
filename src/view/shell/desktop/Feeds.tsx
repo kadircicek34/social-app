@@ -4,7 +4,7 @@ import {useLingui} from '@lingui/react'
 import {useNavigation, useNavigationState} from '@react-navigation/native'
 
 import {getCurrentRoute} from '#/lib/routes/helpers'
-import {NavigationProp} from '#/lib/routes/types'
+import {type NavigationProp} from '#/lib/routes/types'
 import {emitSoftReset} from '#/state/events'
 import {usePinnedFeedsInfos} from '#/state/queries/feed'
 import {useSelectedFeed, useSetSelectedFeed} from '#/state/shell/selected-feed'
@@ -40,7 +40,7 @@ export function DesktopFeeds() {
               key={i}
               style={[
                 a.rounded_sm,
-                t.atoms.bg_contrast_25,
+                t.atoms?.bg_contrast_25,
                 {
                   height: 16,
                   width: i % 2 === 0 ? '60%' : '80%',

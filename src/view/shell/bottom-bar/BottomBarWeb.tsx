@@ -1,5 +1,6 @@
 import React from 'react'
 import {View} from 'react-native'
+import {Pressable} from 'react-native'
 import Animated from 'react-native-reanimated'
 import {msg, plural, Trans} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
@@ -26,7 +27,6 @@ import {
   Bell_Filled_Corner0_Rounded as BellFilled,
   Bell_Stroke2_Corner0_Rounded as Bell,
 } from '#/components/icons/Bell'
-import {Pressable} from 'react-native'
 import {
   HomeOpen_Filled_Corner0_Rounded as HomeFilled,
   HomeOpen_Stoke2_Corner0_Rounded as Home,
@@ -77,9 +77,9 @@ export function BottomBarWeb() {
       style={[
         styles.bottomBar,
         styles.bottomBarWeb,
-        t.atoms.bg,
+        t.atoms?.bg,
         hideBorder
-          ? {borderColor: t.atoms.bg.backgroundColor}
+          ? {borderColor: t.atoms?.bg?.backgroundColor}
           : t.atoms.border_contrast_low,
         footerMinimalShellTransform,
       ]}
@@ -121,6 +121,7 @@ export function BottomBarWeb() {
             style={[styles.ctrl, a.pb_lg]}
             accessibilityRole="link"
             accessibilityLabel="AI Chat"
+            accessibilityHint="Opens AI chat in the current tab"
             accessible={true}>
             <View style={styles.ctrlIconSizingWrapper}>
               <Text

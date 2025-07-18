@@ -83,25 +83,25 @@ function Inner() {
                 .sort((a, b) => (b.postCount ?? 0) - (a.postCount ?? 0))
                 .slice(0, TRENDING_LIMIT)
                 .map(topic => (
-                <TrendingTopicLink
-                  key={topic.link}
-                  topic={topic}
-                  onPress={() => {
-                    logEvent('trendingTopic:click', {context: 'sidebar'})
-                  }}>
-                  {({hovered}) => (
-                    <TrendingTopic
-                      size="small"
-                      topic={topic}
-                      style={[
-                        hovered && [
-                          t.atoms.border_contrast_high,
-                          t.atoms.bg_contrast_25,
-                        ],
-                      ]}
-                    />
-                  )}
-                </TrendingTopicLink>
+                  <TrendingTopicLink
+                    key={topic.link}
+                    topic={topic}
+                    onPress={() => {
+                      logEvent('trendingTopic:click', {context: 'sidebar'})
+                    }}>
+                    {({hovered}) => (
+                      <TrendingTopic
+                        size="small"
+                        topic={topic}
+                        style={[
+                          hovered && [
+                            t.atoms?.border_contrast_high,
+                            t.atoms?.bg_contrast_25,
+                          ],
+                        ]}
+                      />
+                    )}
+                  </TrendingTopicLink>
                 ))}
             </>
           )}

@@ -142,9 +142,10 @@ export function useTheme(theme?: ThemeName) {
     if (!alf) {
       return defaultTheme
     }
-    if (theme) {
-      return alf.themes[theme] ?? defaultTheme
+    const t = theme ? alf.themes[theme] : alf.theme
+    if (!t?.atoms) {
+      return defaultTheme
     }
-    return alf.theme ?? defaultTheme
+    return t
   }, [theme, alf])
 }

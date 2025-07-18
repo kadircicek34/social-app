@@ -43,7 +43,7 @@ export function Composer({winHeight}: {winHeight: number}) {
 
   return (
     <Animated.View
-      style={[a.absolute, a.inset_0, t.atoms.bg, wrapperAnimStyle]}
+      style={[a.absolute, a.inset_0, t.atoms?.bg, wrapperAnimStyle]}
       aria-modal
       accessibilityViewIsModal>
       <ComposePost

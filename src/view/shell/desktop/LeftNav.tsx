@@ -117,7 +117,7 @@ function ProfileCard() {
                   style={[
                     a.w_full,
                     a.transition_color,
-                    active ? t.atoms.bg_contrast_25 : a.transition_delay_50ms,
+                    active ? t.atoms?.bg_contrast_25 : a.transition_delay_50ms,
                     a.rounded_full,
                     a.justify_between,
                     a.align_center,
@@ -366,7 +366,7 @@ function NavItem({count, hasNew, href, icon, iconFilled, label}: NavItemProps) {
         a.outline_inset_1,
         a.transition_color,
       ]}
-      hoverStyle={t.atoms.bg_contrast_25}
+      hoverStyle={t.atoms?.bg_contrast_25}
       // @ts-expect-error the function signature differs on web -prf
       onPress={onPressWrapped}
       href={href}

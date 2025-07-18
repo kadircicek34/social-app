@@ -92,8 +92,8 @@ function Inner({state}: {state: ComposerOpts}) {
           style={[
             styles.container,
             !gtMobile && styles.containerMobile,
-            t.atoms.bg,
-            t.atoms.border_contrast_medium,
+            t.atoms?.bg,
+            t.atoms?.border_contrast_medium,
             !reduceMotionEnabled && [
               a.zoom_fade_in,
               {animationDelay: 0.1},

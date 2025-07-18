@@ -32,7 +32,7 @@ export function Composer({}: {winHeight: number}) {
       presentationStyle="pageSheet"
       animationType="slide"
       onRequestClose={() => ref.current?.onPressCancel()}>
-      <View style={[t.atoms.bg, a.flex_1]}>
+      <View style={[t.atoms?.bg, a.flex_1]}>
         <ComposePost
           cancelRef={ref}
           replyTo={state?.replyTo}
