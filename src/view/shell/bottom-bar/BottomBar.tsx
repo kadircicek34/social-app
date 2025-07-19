@@ -248,73 +248,10 @@ export function BottomBar({navigation}: BottomTabBarProps) {
               accessibilityLabel={_(msg`Feeds`)}
             />
             <Btn
-              testID="bottomBarMessagesBtn"
-              icon={
-                isAtMessages ? (
-                  <MessageFilled
-                    width={iconWidth - 1}
-                    style={[styles.ctrlIcon, pal.text, styles.feedsIcon]}
-                  />
-                ) : (
-                  <Message
-                    width={iconWidth - 1}
-                    style={[styles.ctrlIcon, pal.text, styles.feedsIcon]}
-                  />
-                )
-              }
-              onPress={onPressMessages}
-              notificationCount={numUnreadMessages.numUnread}
-              hasNew={numUnreadMessages.hasNew}
-              accessible={true}
-              accessibilityRole="tab"
-              accessibilityLabel={_(msg`Chat`)}
-              accessibilityHint={
-                numUnreadMessages.count > 0
-                  ? _(
-                      msg`${plural(numUnreadMessages.numUnread ?? 0, {
-                        one: '# unread item',
-                        other: '# unread items',
-                      })}` || '',
-                    )
-                  : ''
-              }
-            />
-            <Btn
               icon={<Briefcase width={iconWidth} style={[styles.ctrlIcon, pal.text]} />}
               onPress={onPressJobs}
               accessibilityRole="tab"
               accessibilityLabel={_(msg`Jobs`)}
-            />
-            <Btn
-              testID="bottomBarNotificationsBtn"
-              icon={
-                isAtNotifications ? (
-                  <BellFilled
-                    width={iconWidth}
-                    style={[styles.ctrlIcon, pal.text, styles.bellIcon]}
-                  />
-                ) : (
-                  <Bell
-                    width={iconWidth}
-                    style={[styles.ctrlIcon, pal.text, styles.bellIcon]}
-                  />
-                )
-              }
-              onPress={onPressNotifications}
-              notificationCount={numUnreadNotifications}
-              accessible={true}
-              accessibilityRole="tab"
-              accessibilityLabel={_(msg`Notifications`)}
-              accessibilityHint={
-                numUnreadNotifications === ''
-                  ? ''
-                  : _(
-                      msg`${plural(numUnreadNotifications ?? 0, {
-                        one: '# unread item',
-                        other: '# unread items',
-                      })}` || '',
-                    )
-              }
             />
             <Btn
               testID="bottomBarProfileBtn"
