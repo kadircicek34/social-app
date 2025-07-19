@@ -1,27 +1,20 @@
-import {View, StyleSheet} from 'react-native'
+import {StyleSheet, View} from 'react-native'
 import {msg} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
 import type React from 'react'
 
+import {usePalette} from '#/lib/hooks/usePalette'
+import {useTheme} from '#/lib/ThemeContext'
+import {useUnreadMessageCount} from '#/state/queries/messages/list-conversations'
+import {useUnreadNotifications} from '#/state/queries/notifications/unread'
 import {useSession} from '#/state/session'
 import {useShellLayout} from '#/state/shell/shell-layout'
 import {HomeHeaderLayoutMobile} from '#/view/com/home/HomeHeaderLayoutMobile'
 import {Text} from '#/view/com/util/text/Text'
-import {usePalette} from '#/lib/hooks/usePalette'
 import {atoms as a, useBreakpoints, useGutters} from '#/alf'
-import {useTheme} from '#/lib/ThemeContext'
 import {ButtonIcon} from '#/components/Button'
-import {Hashtag_Stroke2_Corner0_Rounded as FeedsIcon} from '#/components/icons/Hashtag'
-import {
-  Message_Stroke2_Corner0_Rounded as Message,
-  Message_Stroke2_Corner0_Rounded_Filled as MessageFilled,
-} from '#/components/icons/Message'
-import {
-  Bell_Stroke2_Corner0_Rounded as Bell,
-  Bell_Filled_Corner0_Rounded as BellFilled,
-} from '#/components/icons/Bell'
-import {useUnreadMessageCount} from '#/state/queries/messages/list-conversations'
-import {useUnreadNotifications} from '#/state/queries/notifications/unread'
+import {Bell_Stroke2_Corner0_Rounded as Bell} from '#/components/icons/Bell'
+import {Message_Stroke2_Corner0_Rounded as Message} from '#/components/icons/Message'
 import * as Layout from '#/components/Layout'
 import {Link} from '#/components/Link'
 
@@ -83,7 +76,9 @@ function HomeHeaderLayoutDesktopAndTablet({
                 <ButtonIcon icon={Message} size="lg" />
                 {unreadMessages.numUnread > 0 && (
                   <View style={[styles.badge]}>
-                    <Text style={styles.badgeLabel}>{unreadMessages.numUnread}</Text>
+                    <Text style={styles.badgeLabel}>
+                      {unreadMessages.numUnread}
+                    </Text>
                   </View>
                 )}
               </Link>
@@ -102,17 +97,6 @@ function HomeHeaderLayoutDesktopAndTablet({
                     <Text style={styles.badgeLabel}>{unreadNotifications}</Text>
                   </View>
                 )}
-              </Link>
-              <Link
-                to="/feeds"
-                hitSlop={10}
-                label={_(msg`View your feeds and explore more`)}
-                size="small"
-                variant="ghost"
-                color="secondary"
-                shape="square"
-                style={[a.justify_center]}>
-                <ButtonIcon icon={FeedsIcon} size="lg" />
               </Link>
             </View>
           </View>
