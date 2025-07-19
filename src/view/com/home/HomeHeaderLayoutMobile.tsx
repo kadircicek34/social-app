@@ -7,6 +7,7 @@ import {useMinimalShellHeaderTransform} from '#/lib/hooks/useMinimalShellTransfo
 import {emitSoftReset} from '#/state/events'
 import {useShellLayout} from '#/state/shell/shell-layout'
 import {Text} from '#/view/com/util/text/Text'
+import {usePalette} from '#/lib/hooks/usePalette'
 import {useTheme} from '#/lib/ThemeContext'
 import {atoms as a} from '#/alf'
 import * as Layout from '#/components/Layout'
@@ -18,6 +19,7 @@ export function HomeHeaderLayoutMobile({
   tabBarAnchor: JSX.Element | null | undefined
 }) {
   const t = useTheme()
+  const pal = usePalette('default')
   const {headerHeight} = useShellLayout()
   const headerMinimalShellTransform = useMinimalShellHeaderTransform()
   const playHaptic = useHaptics()
@@ -27,7 +29,7 @@ export function HomeHeaderLayoutMobile({
       style={[
         a.fixed,
         a.z_10,
-        t.atoms.bg,
+        pal.view,
         {
           top: 0,
           left: 0,

@@ -7,8 +7,9 @@ import {useSession} from '#/state/session'
 import {useShellLayout} from '#/state/shell/shell-layout'
 import {HomeHeaderLayoutMobile} from '#/view/com/home/HomeHeaderLayoutMobile'
 import {Text} from '#/view/com/util/text/Text'
-import {useTheme} from '#/lib/ThemeContext'
+import {usePalette} from '#/lib/hooks/usePalette'
 import {atoms as a, useBreakpoints, useGutters} from '#/alf'
+import {useTheme} from '#/lib/ThemeContext'
 import {ButtonIcon} from '#/components/Button'
 import {Hashtag_Stroke2_Corner0_Rounded as FeedsIcon} from '#/components/icons/Hashtag'
 import * as Layout from '#/components/Layout'
@@ -34,6 +35,7 @@ function HomeHeaderLayoutDesktopAndTablet({
   tabBarAnchor: JSX.Element | null | undefined
 }) {
   const t = useTheme()
+  const pal = usePalette('default')
   const {headerHeight} = useShellLayout()
   const {hasSession} = useSession()
   const {_} = useLingui()
@@ -44,7 +46,7 @@ function HomeHeaderLayoutDesktopAndTablet({
       {hasSession && (
         <Layout.Center>
           <View
-            style={[a.flex_row, a.align_center, gutters, a.pt_md, t.atoms.bg]}>
+            style={[a.flex_row, a.align_center, gutters, a.pt_md, pal.view]}>
             <View style={{width: 34}} />
             <View style={[a.flex_1, a.align_center, a.justify_center]}>
               <Text
@@ -72,7 +74,7 @@ function HomeHeaderLayoutDesktopAndTablet({
       )}
       {tabBarAnchor}
       <Layout.Center
-        style={[a.sticky, a.z_10, a.align_center, t.atoms.bg, {top: 0}]}
+        style={[a.sticky, a.z_10, a.align_center, pal.view, {top: 0}]}
         onLayout={e => {
           headerHeight.set(e.nativeEvent.layout.height)
         }}>
