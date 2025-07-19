@@ -1,10 +1,10 @@
 import React from 'react'
-import {ColorSchemeName, useColorScheme} from 'react-native'
+import {type ColorSchemeName, useColorScheme} from 'react-native'
 
 import {isWeb} from '#/platform/detection'
 import {useThemePrefs} from '#/state/shell'
-import {dark, dim, light} from '#/alf/themes'
-import {ThemeName} from '#/alf/types'
+import {dark, dim, light, defaultTheme} from '#/alf/themes'
+import {type Theme, type ThemeName} from '#/alf/types'
 
 export function useColorModeTheme(): ThemeName {
   const theme = useThemeName()
@@ -56,14 +56,11 @@ function updateDocument(theme: ThemeName) {
 
 export function getBackgroundColor(theme: ThemeName): string {
   const fallback = '#000'
-  switch (theme) {
-    case 'light':
-      return light?.atoms?.bg?.backgroundColor ?? fallback
-    case 'dark':
-      return dark?.atoms?.bg?.backgroundColor ?? fallback
-    case 'dim':
-      return dim?.atoms?.bg?.backgroundColor ?? fallback
-    default:
-      return fallback
+  const themes: Record<ThemeName, Theme | undefined> = {
+    light,
+    dark,
+    dim,
   }
+  const t = themes[theme] ?? defaultTheme
+  return t?.atoms?.bg?.backgroundColor ?? fallback
 }
