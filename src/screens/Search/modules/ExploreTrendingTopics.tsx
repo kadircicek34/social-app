@@ -94,7 +94,7 @@ export function TrendRow({
   return (
     <Link
       testID={trend.link}
-      label={_(msg`Browse topic ${trend.displayName}`)}
+      label={_(msg`Browse topic #${trend.displayName}`)}
       to={trend.link}
       onPress={onPress}
       style={[a.border_b, t.atoms.border_contrast_low]}
@@ -119,7 +119,9 @@ export function TrendRow({
                 <Text
                   style={[a.text_md, a.font_bold, a.leading_tight]}
                   numberOfLines={1}>
-                  {trend.displayName}
+                  {trend.displayName.startsWith('#')
+                    ? trend.displayName
+                    : `#${trend.displayName}`}
                 </Text>
               </View>
               <View

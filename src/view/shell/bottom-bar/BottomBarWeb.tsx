@@ -14,7 +14,6 @@ import {type CommonNavigatorParams} from '#/lib/routes/types'
 import {useGate} from '#/lib/statsig/statsig'
 import {useHomeBadge} from '#/state/home-badge'
 import {useUnreadMessageCount} from '#/state/queries/messages/list-conversations'
-import {useUnreadNotifications} from '#/state/queries/notifications/unread'
 import {useSession} from '#/state/session'
 import {useLoggedOutViewControls} from '#/state/shell/logged-out'
 import {useShellLayout} from '#/state/shell/shell-layout'
@@ -56,7 +55,6 @@ export function BottomBarWeb() {
   const iconWidth = 26
 
   const unreadMessageCount = useUnreadMessageCount()
-  const notificationCountStr = useUnreadNotifications()
   const hasHomeBadge = useHomeBadge()
   const gate = useGate()
 
@@ -148,41 +146,6 @@ export function BottomBarWeb() {
 
           {hasSession && (
             <>
-              <NavItem
-                routeName="Messages"
-                href="/messages"
-                notificationCount={unreadMessageCount.numUnread}
-                hasNew={unreadMessageCount.hasNew}>
-                {({isActive}) => {
-                  const Icon = isActive ? MessageFilled : Message
-                  return (
-                    <Icon
-                      aria-hidden={true}
-                      width={iconWidth - 1}
-                      style={[
-                        styles.ctrlIcon,
-                        t.atoms.text,
-                        styles.messagesIcon,
-                      ]}
-                    />
-                  )
-                }}
-              </NavItem>
-              <NavItem
-                routeName="Notifications"
-                href="/notifications"
-                notificationCount={notificationCountStr}>
-                {({isActive}) => {
-                  const Icon = isActive ? BellFilled : Bell
-                  return (
-                    <Icon
-                      aria-hidden={true}
-                      width={iconWidth}
-                      style={[styles.ctrlIcon, t.atoms.text, styles.bellIcon]}
-                    />
-                  )
-                }}
-              </NavItem>
               <NavItem
                 routeName="Profile"
                 href={

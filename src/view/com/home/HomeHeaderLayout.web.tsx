@@ -1,4 +1,4 @@
-import {View} from 'react-native'
+import {View, StyleSheet} from 'react-native'
 import {msg} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
 import type React from 'react'
@@ -12,6 +12,16 @@ import {atoms as a, useBreakpoints, useGutters} from '#/alf'
 import {useTheme} from '#/lib/ThemeContext'
 import {ButtonIcon} from '#/components/Button'
 import {Hashtag_Stroke2_Corner0_Rounded as FeedsIcon} from '#/components/icons/Hashtag'
+import {
+  Message_Stroke2_Corner0_Rounded as Message,
+  Message_Stroke2_Corner0_Rounded_Filled as MessageFilled,
+} from '#/components/icons/Message'
+import {
+  Bell_Stroke2_Corner0_Rounded as Bell,
+  Bell_Filled_Corner0_Rounded as BellFilled,
+} from '#/components/icons/Bell'
+import {useUnreadMessageCount} from '#/state/queries/messages/list-conversations'
+import {useUnreadNotifications} from '#/state/queries/notifications/unread'
 import * as Layout from '#/components/Layout'
 import {Link} from '#/components/Link'
 
@@ -38,6 +48,8 @@ function HomeHeaderLayoutDesktopAndTablet({
   const pal = usePalette('default')
   const {headerHeight} = useShellLayout()
   const {hasSession} = useSession()
+  const unreadMessages = useUnreadMessageCount()
+  const unreadNotifications = useUnreadNotifications()
   const {_} = useLingui()
   const gutters = useGutters([0, 'base'])
 
@@ -58,17 +70,51 @@ function HomeHeaderLayoutDesktopAndTablet({
                 TÜRKLAW
               </Text>
             </View>
-            <Link
-              to="/feeds"
-              hitSlop={10}
-              label={_(msg`View your feeds and explore more`)}
-              size="small"
-              variant="ghost"
-              color="secondary"
-              shape="square"
-              style={[a.justify_center]}>
-              <ButtonIcon icon={FeedsIcon} size="lg" />
-            </Link>
+            <View style={[a.flex_row, a.align_center, a.gap_sm]}>
+              <Link
+                to="/messages"
+                hitSlop={10}
+                label={_(msg`Chat`)}
+                size="small"
+                variant="ghost"
+                color="secondary"
+                shape="square"
+                style={[a.justify_center, {position: 'relative'}]}>
+                <ButtonIcon icon={Message} size="lg" />
+                {unreadMessages.numUnread > 0 && (
+                  <View style={[styles.badge]}>
+                    <Text style={styles.badgeLabel}>{unreadMessages.numUnread}</Text>
+                  </View>
+                )}
+              </Link>
+              <Link
+                to="/notifications"
+                hitSlop={10}
+                label={_(msg`Notifications`)}
+                size="small"
+                variant="ghost"
+                color="secondary"
+                shape="square"
+                style={[a.justify_center, {position: 'relative'}]}>
+                <ButtonIcon icon={Bell} size="lg" />
+                {unreadNotifications !== '' && (
+                  <View style={[styles.badge]}>
+                    <Text style={styles.badgeLabel}>{unreadNotifications}</Text>
+                  </View>
+                )}
+              </Link>
+              <Link
+                to="/feeds"
+                hitSlop={10}
+                label={_(msg`View your feeds and explore more`)}
+                size="small"
+                variant="ghost"
+                color="secondary"
+                shape="square"
+                style={[a.justify_center]}>
+                <ButtonIcon icon={FeedsIcon} size="lg" />
+              </Link>
+            </View>
           </View>
         </Layout.Center>
       )}
@@ -83,3 +129,24 @@ function HomeHeaderLayoutDesktopAndTablet({
     </>
   )
 }
+
+const styles = StyleSheet.create({
+  badge: {
+    position: 'absolute',
+    top: -4,
+    right: -4,
+    backgroundColor: '#ff3b30',
+    minWidth: 14,
+    height: 14,
+    borderRadius: 7,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 2,
+  },
+  badgeLabel: {
+    color: 'white',
+    fontSize: 10,
+    fontWeight: 'bold',
+    lineHeight: 12,
+  },
+})
